@@ -1,0 +1,214 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffd6e7, #e7d6ff);
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 380px;
+  min-height: 520px;
+  position: relative;
+  perspective: 1000px;
+}
+
+.card-front,
+.card-inside {
+  width: 100%;
+  min-height: 520px;
+  padding: 45px 30px;
+  border-radius: 25px;
+  text-align: center;
+
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+
+  transition: 0.7s ease;
+}
+
+.card-inside {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: rotateY(180deg);
+}
+
+.card.open .card-front {
+  opacity: 0;
+  visibility: hidden;
+  transform: rotateY(-180deg);
+}
+
+.card.open .card-inside {
+  opacity: 1;
+  visibility: visible;
+  transform: rotateY(0);
+}
+
+.balloons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+.balloons span:nth-child(1) {
+  transform: rotate(-10deg);
+}
+
+.balloons span:nth-child(2) {
+  transform: translateY(-15px);
+}
+
+.balloons span:nth-child(3) {
+  transform: rotate(10deg);
+}
+
+.small-text {
+  color: #777;
+  font-size: 15px;
+}
+
+h1 {
+  margin-top: 10px;
+  font-size: 48px;
+  color: #e75480;
+  font-family: Georgia, serif;
+}
+
+.friend {
+  margin-top: 5px;
+  color: #777;
+  font-size: 17px;
+}
+
+.cake {
+  font-size: 80px;
+  margin: 30px 0;
+  animation: bounce 1.5s infinite;
+}
+
+button {
+  border: none;
+  padding: 14px 25px;
+  border-radius: 30px;
+  background: #e75480;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.08);
+  background: #d63d6b;
+}
+
+.heart {
+  font-size: 55px;
+  animation: heartbeat 1s infinite;
+}
+
+.card-inside h2 {
+  margin: 15px 0 20px;
+  color: #e75480;
+  font-family: Georgia, serif;
+  font-size: 30px;
+}
+
+.card-inside p {
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+.card-inside h3 {
+  color: #d63d6b;
+  margin: 20px 0;
+}
+
+.from {
+  font-style: italic;
+  font-weight: bold;
+}
+
+#confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 18px;
+  animation: fall 3s linear forwards;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 450px) {
+  .card {
+    width: 90%;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  .card-front,
+  .card-inside {
+    min-height: 500px;
+  }
+}
